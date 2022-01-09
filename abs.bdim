@@ -1,5 +1,5 @@
-(1,-45,0,0)
-(16,0,0,1)
+(1,v,0,0) #taking input in mem[0]
+(16,0,0,1) # 0 assigned in mem[1]
 (12,0,1,2) #assigning value for input >0 true or false to mem[2]
 (13,2,0,7) #if mem[2] is true then go to line 8
 (7,1,0,3) #assigning -input to mem[3]
