@@ -1,0 +1,5 @@
+(1,a,0,0) #input a to mem[0]
+(1,d,0,1) #input d to mem[1]
+(1,n,0,2) #input n to mem[2]
+(16,2,0,3) #2 stored in mem[3]
+(8,0,3,0) #mem[0] = 2a
