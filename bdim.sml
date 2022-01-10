@@ -129,40 +129,49 @@ fun op1(array) = let val str = valOf(TextIO.inputLine TextIO.stdIn);
 (*Made the functions op_ corresponding to the instruction of bdim file *)
 
 fun traverse(arrayList,i,length) = let val operator = Array.sub(List.nth(arrayList,i),0);
-                                val mem_i = Array.sub(mem,Array.sub(List.nth(arrayList,i),1));
+                                val i_actual = Array.sub(List.nth(arrayList,i),1);
+                                val unkown = print("count");
                                 val c = Array.sub(List.nth(arrayList,i),3);
                                 val array = List.nth(arrayList,i);
                         fun operation(0,j) = length
                         |operation(1,j) = let val instruction = op1(array);
-                                        in j +1 end;
+                                        in j +1 end
                         |operation(2,j) = let val instruction = op2(array);
-                        in j+1 end;
+                        in j+1 end
                         |operation(3,j) = let val instruction = op3(array);
-                        in j +1 end;
+                        in j +1 end
                         |operation(4,j) = let val instruction = op4(array);
-                        in j + 1 end;
+                        in j + 1 end
                         |operation(5,j) = let val instruction = op5(array);
-                        in j + 1 end;
+                        in j + 1 end
                         |operation(6,j) = let val instruction = op6(array);
-                        in j + 1 end;
+                        in j + 1 end
                         |operation(7,j) = let val instruction = op7(array);
-                        in j + 1 end;
+                        in j + 1 end
                         |operation(8,j) = let val instruction = op8(array);
-                        in j + 1 end;
+                        in j + 1 end
                         | operation(9,j) = let val instruction = op9(array);
-                        in j + 1 end;
+                        in j + 1 end
                         |operation(10,j) =  let val instruction = op10(array);
-                        in j + 1 end;
+                        in j + 1 end
                         |operation(11,j) = let val instruction = op11(array);
-                        in j + 1 end;
+                        in j + 1 end
                         |operation(12,j) = let val instruction= op12(array);
-                        in j + 1 end;
-                        |operation(13,j) =  if mem_i = 1 then c else (if mem_i = 0 then j+1 else raise Subscript);
-                        |operation(14,j) = c;
+                        in j + 1 end
+                        |operation(13,j) =  if Array.sub(mem,i_actual) = 1 then c else (if Array.sub(mem,i_actual) = 0 then j+1 else raise Subscript)
+                        |operation(14,j) = c
                         |operation(15,j) = let val instruction = op15(array);
-                        in j + 1 end;
+                        in j + 1 end
                         |operation(16,j) = let val instruction = op16(array);
-                        in j +1 end;
+                        in j +1 end
                         |operation(x,j) = raise Subscript;
                     in if i >= length then print("code Executed successfully") else traverse(arrayList,operation(operator,i),length)
                     end;
+val test = code(filename);
+val test2 =  traverse(test,0,List.length(test));
+(*-----------The function traverse will analyse the whole int array list and update mem accordingly-------------*)
+fun interpret(file) = let val code_set = code(file);
+                        val len = List.length(code_set);
+                        val run = traverse(code_set,0,len);
+                        in print("") end;
+(* interpret(filename); *)
