@@ -53,4 +53,56 @@ fun string_vector(file,list) = let val string_option = TextIO.inputLine(file);
 fun code(file) = let val string_list = string_vector(file,[]) ;
                     val generate = map makeQuad;
                 in map makeQuad string_list end; 
-code(filename);
+(*The function code will take input the bdim file and give output as a list of 4 element
+array which we will traverse for the instruction*)
+(*output type of code is int array list*)
+
+
+(*---------Now we shall make the function for individual instruction-------*)
+
+fun op2(array) = let val i = Array.sub(array,1);
+                     val k = Array.sub(array,3);
+                 in Array.update(mem,k,Array.sub(mem,i)) end;
+fun op3(array) = let val mem_i = Array.sub(mem,Array.sub(array,1));
+                    val k = Array.sub(array,3);
+                in (if mem_i =1 then Array.update(mem,k,0) else 
+                    (if mem_i = 0 then Array.update(mem,k,1)else 
+                    raise Subscript)) end;
+fun op4(array) = let val mem_i = Array.sub(mem,Array.sub(array,1));
+                    val mem_j = Array.sub(mem,Array.sub(array,2));
+                    val k = Array.sub(array,3);
+                    fun temp(0,0) = Array.update(mem,k,0)
+                    |temp(1,1) = Array.update(mem,k,1)
+                    |temp(1,0) = Array.update(mem,k,1)
+                    |temp(0,1) = Array.update(mem,k,1)
+                    |temp(x,y) = raise Subscript;
+                    in temp(mem_i,mem_j) end;
+fun op5(array) = let val mem_i = Array.sub(mem,Array.sub(array,1));
+                    val mem_j = Array.sub(mem,Array.sub(array,2));
+                    val k = Array.sub(array,3);
+                    fun temp(1,1) = Array.update(mem,k,1)
+                    |temp(0,1) = Array.update(mem,k,0)
+                    |temp(1,0) = Array.update(mem,k,0)
+                    |temp(0,0) = Array.update(mem,k,0)
+                    |temp(x,y) = raise Subscript;
+                    in temp(mem_i,mem_j) end;
+fun op6(array) = let val mem_i = Array.sub(mem,Array.sub(array,1));
+                    val mem_j = Array.sub(mem,Array.sub(array,2));
+                    val k = Array.sub(array,3);
+                in Array.update(mem,k,mem_i + mem_j) end;
+fun op7(array) = let val mem_i = Array.sub(mem,Array.sub(array,1));
+                    val mem_j = Array.sub(mem,Array.sub(array,2));
+                    val k = Array.sub(array,3);
+                in Array.update(mem,k,mem_i - mem_j) end;
+fun op8(array) = let val mem_i = Array.sub(mem,Array.sub(array,1));
+                    val mem_j = Array.sub(mem,Array.sub(array,2));
+                    val k = Array.sub(array,3);
+                in Array.update(mem,k,mem_i * mem_j) end;
+fun op9(array) = let val mem_i = Array.sub(mem,Array.sub(array,1));
+                    val mem_j = Array.sub(mem,Array.sub(array,2));
+                    val k = Array.sub(array,3);
+                in Array.update(mem,k,mem_i div mem_j) end;
+fun op10(array) = let val mem_i = Array.sub(mem,Array.sub(array,1));
+                    val mem_j = Array.sub(mem,Array.sub(array,2));
+                    val k = Array.sub(array,3);
+                in Array.update(mem,k,mem_i mod mem_j) end;
