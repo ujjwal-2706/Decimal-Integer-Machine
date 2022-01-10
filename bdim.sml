@@ -106,3 +106,22 @@ fun op10(array) = let val mem_i = Array.sub(mem,Array.sub(array,1));
                     val mem_j = Array.sub(mem,Array.sub(array,2));
                     val k = Array.sub(array,3);
                 in Array.update(mem,k,mem_i mod mem_j) end;
+fun op11(array) = let val mem_i = Array.sub(mem,Array.sub(array,1));
+                    val mem_j = Array.sub(mem,Array.sub(array,2));
+                    val k = Array.sub(array,3);
+                in (if mem_i = mem_j then Array.update(mem,k,1)
+                else Array.update(mem,k,0)) end;
+fun op12(array) = let val mem_i = Array.sub(mem,Array.sub(array,1));
+                    val mem_j = Array.sub(mem,Array.sub(array,2));
+                    val k = Array.sub(array,3);
+                in (if mem_i > mem_j then Array.update(mem,k,1)
+                else Array.update(mem,k,0)) end;
+fun op15(array) = print(Int.toString(Array.sub(mem,Array.sub(array,1))));
+fun op16(array) = let val v = Array.sub(array,1);
+                    val k = Array.sub(array,3);
+                in Array.update(mem,k,v) end;
+
+fun op1(array) = let val str = valOf(TextIO.inputLine TextIO.stdIn);
+                    val v = valOf (Int.fromString str);
+                    val k = Array.sub(array,3);
+                in Array.update(mem,k,v) end;
