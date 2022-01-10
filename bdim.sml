@@ -2,7 +2,7 @@ val filename = TextIO.openIn "abs.bdim";
 (* val read1 = Option.valOf(TextIO.inputLine(filename)); *)
 val maxMemSize = 100;
 val mem = Array.array(maxMemSize,~1);
-val x = valOf(Int.fromString("33433"));
+
 
 (*Made a funciton to parse a single line and check if it has valid syntax*)
 exception SyntaxError;
@@ -116,7 +116,7 @@ fun op12(array) = let val mem_i = Array.sub(mem,Array.sub(array,1));
                     val k = Array.sub(array,3);
                 in (if mem_i > mem_j then Array.update(mem,k,1)
                 else Array.update(mem,k,0)) end;
-fun op15(array) = print(Int.toString(Array.sub(mem,Array.sub(array,1))));
+fun op15(array) = print(Int.toString(Array.sub(mem,Array.sub(array,1))) ^ "\n");
 fun op16(array) = let val v = Array.sub(array,1);
                     val k = Array.sub(array,3);
                 in Array.update(mem,k,v) end;
@@ -128,9 +128,10 @@ fun op1(array) = let val str = valOf(TextIO.inputLine TextIO.stdIn);
 
 (*Made the functions op_ corresponding to the instruction of bdim file *)
 
-fun traverse(arrayList,i,length) = let val operator = Array.sub(List.nth(arrayList,i),0);
+fun traverse(arrayList,i,length) = if i >= length then print("code Executed successfully \n") else 
+                            (let val operator = Array.sub(List.nth(arrayList,i),0);
                                 val i_actual = Array.sub(List.nth(arrayList,i),1);
-                                val unkown = print("count");
+                                
                                 val c = Array.sub(List.nth(arrayList,i),3);
                                 val array = List.nth(arrayList,i);
                         fun operation(0,j) = length
@@ -165,13 +166,11 @@ fun traverse(arrayList,i,length) = let val operator = Array.sub(List.nth(arrayLi
                         |operation(16,j) = let val instruction = op16(array);
                         in j +1 end
                         |operation(x,j) = raise Subscript;
-                    in if i >= length then print("code Executed successfully") else traverse(arrayList,operation(operator,i),length)
-                    end;
-val test = code(filename);
-val test2 =  traverse(test,0,List.length(test));
+                    in  traverse(arrayList,operation(operator,i),length)
+                    end);
+
 (*-----------The function traverse will analyse the whole int array list and update mem accordingly-------------*)
 fun interpret(file) = let val code_set = code(file);
                         val len = List.length(code_set);
                         val run = traverse(code_set,0,len);
                         in print("") end;
-(* interpret(filename); *)
