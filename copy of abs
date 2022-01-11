@@ -1,9 +1,13 @@
-(1,v,0,0) #taking input in mem[0]
-(16,0,0,1) # 0 assigned in mem[1]
-(12,0,1,2) #assigning value for input >0 true or false to mem[2]
-(13,2,0,7) #if mem[2] is true then go to line 8
-(7,1,0,3) #assigning -input to mem[3]
-(15,3,0,0) #outputing the -value
-(0,0,0,0) #stoping the function
-(15,0,0,0) #outputting the real value
-(0,0,0,0) #stopping the function
+(1,a,0,0) #input a to mem[0]
+(1,d,0,1) #input d to mem[1]
+(1,n,0,2) #input n to mem[2]
+(16,2,0,3) #2 stored in mem[3]
+(16,1,0,4) #1 stored in mem[4]
+(8,3,0,0) #2a stored in mem[0]
+(7,2,4,5) #n-1 stored in mem[5]
+(8,5,1,5) #d(n-1) stored in mem[5]
+(6,0,5,0) #2a + n-1(d) stored in mem[0]
+(8,0,2,0) # n *(2a + n-1(d)) stored in mem[0]
+(9,0,3,7) #result stored in mem[7]
+(15,7,0,0) #output
+(0,0,0,0) #halt
