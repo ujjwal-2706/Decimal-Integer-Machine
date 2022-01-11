@@ -1,13 +1,11 @@
-(1,a,0,0) #input a to mem[0]
-(1,d,0,1) #input d to mem[1]
-(1,n,0,2) #input n to mem[2]
-(16,2,0,3) #2 stored in mem[3]
-(16,1,0,4) #1 stored in mem[4]
-(8,3,0,0) #2a stored in mem[0]
-(7,2,4,5) #n-1 stored in mem[5]
-(8,5,1,5) #d(n-1) stored in mem[5]
-(6,0,5,0) #2a + n-1(d) stored in mem[0]
-(8,0,2,0) # n *(2a + n-1(d)) stored in mem[0]
-(9,0,3,7) #result stored in mem[7]
-(15,7,0,0) #output
-(0,0,0,0) #halt
+(1,n,0,0) #input no. n stored in mem[0]
+(16,1,0,1) #count stored in mem[1]
+(16,1,0,2) #result stored in mem[2]
+(16,1,0,5) #1 stored in mem[5]
+(12,1,0,3) #true if n < count stored in mem[3]
+(13,3,0,9) #breakpoint of while loop
+(8,2,1,2) #result = result*count
+(6,1,5,1) #count = count +1
+(14,0,0,4) #while loop again on
+(15,2,0,0) #print output
+(0,0,0,0) #stop
