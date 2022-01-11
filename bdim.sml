@@ -1,5 +1,3 @@
-val filename = TextIO.openIn "abs.bdim";
-(* val read1 = Option.valOf(TextIO.inputLine(filename)); *)
 val maxMemSize = 100;
 val mem = Array.array(maxMemSize,~1);
 
@@ -170,7 +168,8 @@ fun traverse(arrayList,i,length) = if i >= length then print("code Executed succ
                     end);
 
 (*-----------The function traverse will analyse the whole int array list and update mem accordingly-------------*)
-fun interpret(file) = let val code_set = code(file);
+fun interpret(str) = let val file = TextIO.openIn str;
+                        val code_set = code(file);
                         val len = List.length(code_set);
                         val run = traverse(code_set,0,len);
                         in print("") end;
