@@ -1,11 +1,24 @@
-(1,n,0,0) #input no. n stored in mem[0]
-(16,1,0,1) #count stored in mem[1]
-(16,1,0,2) #result stored in mem[2]
-(16,1,0,5) #1 stored in mem[5]
-(12,1,0,3) #true if n < count stored in mem[3]
-(13,3,0,9) #breakpoint of while loop
-(8,2,1,2) #result = result*count
-(6,1,5,1) #count = count +1
-(14,0,0,4) #while loop again on
-(15,2,0,0) #print output
-(0,0,0,0) #stop
+(1,0,0,0) #fibonacci input mem[0]
+(16,0,0,1) #fib(0) in mem[1]
+(16,1,0,2) #fib(1) in mem[2]
+(16,1,0,8) #1 stored in mem[8]
+(16,2,0,3) #count = 2 in mem[3]
+(11,0,1,4) # mem[4] = n == 0
+(11,0,2,5) #mem[5] = n == 1
+(13,4,0,16) #if n = 0 then exit1
+(13,5,0,19) #if n = 1 then exit2
+(12,3,0,6) #n < count in mem[6]
+(13,6,0,22)
+(2,2,0,7) #storing fib(n-1) in mem[7]
+(6,1,2,2) #fib(n-1) to fib(n-1) + fib(n-2)
+(2,7,0,1) # fib(n-2) updated fib(n-1)
+(6,8,3,3) #count++ in mem[3]
+(14,0,0,9) #loop again
+(16,0,0,9) #mem[9] = 0
+(15,9,0,0) # output 0
+(0,0,0,0) # stop1
+(16,1,0,10) #mem[10] = 1
+(15,10,0,0) #output 1
+(0,0,0,0) #stop2
+(15,2,0,0) #output final
+(0,0,0,0)
