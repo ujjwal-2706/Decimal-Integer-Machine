@@ -114,19 +114,20 @@ fun op12(array) = let val mem_i = Array.sub(mem,Array.sub(array,1));
                     val k = Array.sub(array,3);
                 in (if mem_i > mem_j then Array.update(mem,k,1)
                 else Array.update(mem,k,0)) end;
-fun op15(array) = print(Int.toString(Array.sub(mem,Array.sub(array,1))) ^ "\n");
+fun op15(array) = print("output : " ^ Int.toString(Array.sub(mem,Array.sub(array,1))) ^ "\n");
 fun op16(array) = let val v = Array.sub(array,1);
                     val k = Array.sub(array,3);
                 in Array.update(mem,k,v) end;
 
-fun op1(array) = let val str = valOf(TextIO.inputLine TextIO.stdIn);
+fun op1(array) = let   val temp1 = print("input : "); 
+                    val str = valOf(TextIO.inputLine TextIO.stdIn);
                     val v = valOf (Int.fromString str);
                     val k = Array.sub(array,3);
                 in Array.update(mem,k,v) end;
 
 (*Made the functions op_ corresponding to the instruction of bdim file *)
 
-fun traverse(arrayList,i,length) = if i >= length then print("code Executed successfully \n") else 
+fun traverse(arrayList,i,length) = if i >= length then print("Code Executed Successfully \n") else 
                             (let val operator = Array.sub(List.nth(arrayList,i),0);
                                 val i_actual = Array.sub(List.nth(arrayList,i),1);
                                 
