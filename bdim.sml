@@ -1,4 +1,4 @@
-val maxMemSize = 100;
+val maxMemSize = 1000;
 val mem = Array.array(maxMemSize,~1);
 
 
@@ -36,7 +36,7 @@ fun quadruple(string_value,i,arr,j) = if i >= size(string_value)-2 then arr else
             val first =  Array.update(arr,j,number); in
         quadruple(string_value,index,arr,j+1) end);
 fun makeQuad(string_value) =let val arr = Array.array(4,~1) in quadruple(string_value,0,arr,0) end;
-(* val what = makeQuad(read1); *)
+
 
 (*-----Function makeQuad will read the string line of .bdim and give a corresponding quadruple
  array as a result which we will use to generate our vector code of instruction----*)
@@ -173,4 +173,4 @@ fun interpret(str) = let val file = TextIO.openIn str;
                         val code_set = code(file);
                         val len = List.length(code_set);
                         val run = traverse(code_set,0,len);
-                        in print("") end;
+                        in  print("") end;
