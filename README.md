@@ -1,5 +1,5 @@
 # Decimal-Integer-Machine
-BDIM(Basic Decimal Integer Machine) compiler written in Standard ML
+BDIM(Basic Decimal Integer Machine) interpreter written in Standard ML
 
 This is the interpreter of a hypothetical language named BDIM (basic decimal integer machine)
 The exact syntax of this language along with the opcodes ( meaning of the operations which the number perform)
